@@ -1,0 +1,42 @@
+#header {
+  padding: 20px 10px;
+}
+
+.menu {
+  padding: 15px 25px;
+  float: right;
+}
+
+.menu a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  font-size: 16px;
+  line-height: 16px;:
+}
+
+.menu img {
+  width: 25px;
+  height: 25px;
+  padding: 7px;
+}
+
+.sign-in-button {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.apps_button {
+  background-image: url(//ssl.gstatic.com/gb/images/i1_1967ca6a.png);
+}
+
+#search-box {
+  border: 1px;
+  border-color: #0000006b;
+  border-style: inset;
+  height: 44px;
+  width: 584px;
+}
+
+
