@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <p></p>
+
+    <script>
+      var arg1 = prompt("input arg1");
+      var arg2 = prompt("input arg2");
+      var paragraph = document.querySelector('p');
+
+      function power(arg1, arg2) {
+        let accumulator = arg1;
+
+        for(var i = 2; i <= arg2; i++) {
+          accumulator = accumulator * arg1;
+        }
+
+        return accumulator;
+      }
+
+      window.onload = function() {
+        if((arg1 > 0) && (arg2 > 0)){
+          paragraph.textContent = "Power of " + arg1 + ", " + arg2 + " times is equal to " + power(arg1, arg2);
+        } else {
+          paragraph.textContent = "Not working";
+        }
+      }
+    </script>
+  </body>
+</html>
