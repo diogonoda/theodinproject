@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <h1>The title of my webpage</h1>
+
+    <div id="container">
+      <div class="content">
+        This is the text-content!
+      </div>
+    </div>
+
+    <!--    <button onclick="alert('Hello World')">Click Me</button> -->
+    <button onclick="alertFunction()">Click Me</button>
+
+    <button id="btn">Click Me2</button>
+
+    <button id="btn2">Click Me Too</button>
+
+    <script>
+      const container = document.querySelector('#container');
+
+      const redTextParagraph = document.createElement('p');
+      redTextParagraph.style.color = 'red';
+      redTextParagraph.textContent = 'Hey I’m red!';
+
+      container.appendChild(redTextParagraph);
+
+
+      const blueTextH3 = document.createElement('h3');
+      blueTextH3.style.color = 'blue';
+      blueTextH3.textContent = 'I’m a blue h3!';
+
+      container.appendChild(blueTextH3);
+
+
+      const insideDiv = document.createElement('div');
+      insideDiv.style.border = 'thick solid black';
+      insideDiv.style.backgroundColor = 'pink';
+
+        const insideDivH1 = document.createElement('h1');
+        insideDivH1.textContent = 'I’m in a div';
+
+        insideDiv.appendChild(insideDivH1);
+
+
+        const insideDivP = document.createElement('p');
+        insideDivP.textContent = 'ME TOO';
+
+        insideDiv.appendChild(insideDivP);
+
+      container.appendChild(insideDiv);
+    </script>
+    <script src="ext_javascript.js"></script>
+  </body>
+</html>

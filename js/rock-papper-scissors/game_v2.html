@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <button id="rock" class="selection">Rock</button>
+    <button id="papper" class="selection">Papper</button>
+    <button id="scissors" class="selection">Scissors</button>
+
+    <div id="result">
+      <p id="display"></p>
+      <p id="points"></p>
+      <p id="endGame"></p>
+    </div>
+
+    <script>
+      var playerPoints = 0;
+      var computerPoints = 0;
+
+      function computerPlay() {
+        var value = Math.floor(Math.random() * 3);
+
+        switch (value) {
+          case 0:
+            return 'rock';
+          case 1:
+            return 'papper';
+          case 2:
+            return 'scissors';
+        }
+      }
+
+      function playRound(playerSelection, computerSelection){
+        if(playerSelection === computerSelection){
+          return `Draw! Both choose ${computerSelection}!`;
+        } else if(   playerSelection === 'rock' && computerSelection === 'scissors'
+          || playerSelection === 'papper' && computerSelection === 'rock'
+          || playerSelection === 'scissors' && computerSelection === 'papper') {
+          playerPoints++;
+
+          return `You win! ${playerSelection.toLowerCase()} beats ${computerSelection}!`;
+        } else {
+          computerPoints++;
+
+          return `You lose! ${computerSelection} beats ${playerSelection.toLowerCase()}!`;
+        }
+      }
+
+      function game(e) {
+        var playerSelection = e.target.id;
+        var computerSelection = computerPlay();
+
+        display.textContent = playRound(playerSelection, computerSelection);
+
+        if(playerPoints === computerPoints){
+          message = "Draw!";
+        } else if(playerPoints > computerPoints){
+          message = "You win the battle!";
+        } else {
+          message = "You lost the battle!";
+        }
+
+        pointsParagraph.textContent = `You ${playerPoints} x ${computerPoints} Computer`;
+
+        if(playerPoints === 5 || computerPoints ===5){
+          endGameParagraph.textContent = `End of the game!!! ${message} Your points ${playerPoints} x ${computerPoints} Computer Points`;
+
+          playerPoints = 0;
+          computerPoints = 0;
+        } else if(endGameParagraph.textContent !== ""){
+          endGameParagraph.textContent = "";
+        }
+      }
+
+      const selectionButtons = document.querySelectorAll(".selection");
+      const displayParagraph = document.querySelector("#display");
+      const pointsParagraph = document.querySelector("#points");
+      const endGameParagraph = document.querySelector("#endGame");
+
+      selectionButtons.forEach(selectionButton => selectionButton.addEventListener('click', game));
+
+      function playGame(e){
+        playerSelection = e.target.id;
+        display.textContent = playRound(playerSelection, computerPlay());
+      }
+    </script>
+  </body>
+</html>
