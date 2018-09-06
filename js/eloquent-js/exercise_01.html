@@ -1,6 +1,6 @@
 <html>
   <head>
-
+    <meta charset="UTF-8">
   </head>
   <body>
     <table>
@@ -49,50 +49,24 @@
           trHeader.appendChild(headerTh);
         }
 
-/*        let nameHeader = document.createElement("th");
-        nameHeader.appendChild(document.createTextNode("Name"));
-
-        let heightHeader = document.createElement("th");
-        heightHeader.appendChild(document.createTextNode("Height"));
-
-        let placeHeader = document.createElement("th");
-        placeHeader.appendChild(document.createTextNode("Place"));
-
-        trHeader.appendChild(nameHeader);
-        trHeader.appendChild(heightHeader);
-        trHeader.appendChild(placeHeader);
-*/
-        for(var key in MOUNTAINS){
+        MOUNTAINS.forEach(mountain => {
           let trRows = document.createElement("tr");
           table.appendChild(trRows);
 
-          let tdName = document.createElement("td");
-          tdName.appendChild(document.createTextNode(MOUNTAINS[key].name));
-          trRows.appendChild(tdName);
+          header.forEach(field => {
+            let tdField = document.createElement("td");
+            tdField.appendChild(document.createTextNode(mountain[field]));
 
-          let tdHeight = document.createElement("td");
-          tdHeight.style.textAlign = "right";
-          tdHeight.appendChild(document.createTextNode(MOUNTAINS[key].height));
-          trRows.appendChild(tdHeight);
+            if(typeof mountain[field] == "number"){
+              tdField.style.textAlign = "right";
+            }
 
-          let tdPlace = document.createElement("td");
-          tdPlace.appendChild(document.createTextNode(MOUNTAINS[key].place));
-          trRows.appendChild(tdPlace);
-        }
+            trRows.appendChild(tdField);
+          });
+        });
       }
 
       createTable();
-/*
-      let table = document.body.getElementsByTagName("table")[0];
-
-      for(var key in MOUNTAINS){
-        let trRows = document.createElement("tr");
-        table.appendChild(trRows);
-
-        let td = document.createElement("td");
-        td.appendChild(document.createTextNode(MOUNTAINS[key].name));
-      }
-*/
     </script>
   </body>
 </html>

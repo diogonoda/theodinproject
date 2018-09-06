@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <h1>Heading with a <span>span</span> element.</h1>
+    <p>A paragraph with <span>one</span>, <span>two</span> spans</p>
+
+    <script>
+      function tagByName(node, tagName) {
+        found = [];
+
+        function searchNodes(node){
+          node.childNodes.forEach(child => {
+            if (child.nodeType == document.ELEMENT_NODE) {
+              if (child.nodeName == tagName.toUpperCase()) {
+                found.push(child);
+              }
+
+              searchNodes(child);
+            }
+          });
+        }
+
+        searchNodes(node);
+        return found;
+      }
+
+      console.log(tagByName(document.body, "h1").length);  // 1
+      console.log(tagByName(document.body, "span").length); // 3
+
+      let para = document.querySelector("p");
+
+      console.log(tagByName(para, "span").length); // 2
+    </script>
+  </body>
+</html>
