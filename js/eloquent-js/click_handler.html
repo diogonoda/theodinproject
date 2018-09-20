@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <p>Click this document to activate the handler.</p>
+
+  <button id="btn1">Click me</button>
+
+  <button id="btn2">Click me2</button>
+
+  <script>
+    window.addEventListener("click", () => {
+      console.log("You knocked?");
+    });
+
+    let button1 = document.getElementById("btn1");
+
+    button1.addEventListener("click", () => {
+      console.log("Button clicked");
+    })
+
+    let button2 = document.getElementById("btn2");
+
+    button2.addEventListener("click", event => {
+      if(event.button == 0){
+        console.log("left button");
+      }else if(event.button == 1){
+        console.log("middle button");
+      }else if(event.button == 2){
+        console.log("right button");
+      }
+    })
+  </script>
+</body>
+</html>
+
