@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Events Exercises</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+<body>
+    <p>🎈</p>
+
+    <script>
+      let paragraph = document.querySelector("p");
+
+      let balloonLimit = parseInt(Math.random() * 100);
+console.log(balloonLimit);
+      window.addEventListener("keydown", event => {
+        if([38, 40].includes(event.keyCode) && paragraph.textContent == "🎈"){
+          window.addEventListener("keydown", resizeFont);
+        }
+      })
+
+      function resizeFont(event){
+        actualFontSize = parseFloat(window.getComputedStyle(paragraph).getPropertyValue("font-size"));
+
+        if(event.keyCode == 38){
+          if(actualFontSize == balloonLimit){
+            paragraph.textContent = "💥";
+
+            window.removeEventListener("keydown", resizeFont);
+            return;
+          }
+
+          paragraph.style.fontSize = actualFontSize + 1 + "px";
+        }else if(event.keyCode == 40){
+          paragraph.style.fontSize = actualFontSize - 1 + "px";
+        }
+      }
+    </script>
+</body>
+</html>
