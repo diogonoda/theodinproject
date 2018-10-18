@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <style>
+      .trail {
+        position: absolute;
+        height: 6px;
+        width: 6px;
+        border-radius: 3px;
+        background: teal;
+      }
+
+      body {
+        height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="trail"></div>
+
+    <script>
+      document.addEventListener("mousemove", moved);
+
+      function positioning(element){
+        element.style.left = (event.pageX - 4) + "px";
+        element.style.top = (event.pageY - 4) + "px";
+
+        document.body.appendChild(element);
+      }
+
+      function moved(event){
+        let dots = document.querySelectorAll("div");
+
+        if(dots.length <= 10){
+          let dot = document.createElement("div");
+          dot.className = "trail";
+
+          positioning(dot);
+        } else {
+          let dot = dots[0];
+
+          positioning(dot);
+        }
+      }
+    </script>
+  </body>
+</html>
