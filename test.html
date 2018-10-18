@@ -1,14 +1,66 @@
 <html>
   <head>
+    <meta charset="UTF-8">
   </head>
   <body>
-    <p>One</p>
-    <p>Two</p>
-    <p>Three</p>
+    <div id="firstDiv">
+    </div>
+
+    <style>
+/*
+      .myTable{
+        border: 1px solid;
+        display: inline;
+      }
+*/
+      .openingDiv {
+        float: none; 
+      }
+
+      .secondDiv {
+        float: left;
+        border: 1px solid;
+        display: inline;
+      }
+    </style>
 
     <script>
-      let paragraphs = document.getElementsByTagName("p");
-      document.body.insertBefore(paragraphs[2], paragraphs[0]);
+      let firstDiv = document.getElementById("firstDiv");
+
+      for (let j = 0; j < 16; j++) {
+        for (let i = 0; i < 16; i++) {
+          let div = document.createElement("div");
+
+          if (i > 0) {
+            div.className = "secondDiv";          
+          } else {
+            div.className = "openingDiv";
+          }
+
+          firstDiv.appendChild(div);    
+        }      
+      }
+/*
+      let table = document.createElement("table");
+      table.className = "myTable";
+      document.body.appendChild(table);
+
+      for(var i = 0; i < 16; i++){
+        let tr = document.createElement("tr");
+        tr.className = "myTable";
+        table.appendChild(tr);
+
+        for(var j = 0; j < 16; j++){
+          let td = document.createElement("td");
+          td.className = "myTable";
+          tr.appendChild(td);
+
+          let div = document.createElement("div");
+          div.className = "myTable";
+          td.appendChild(div);
+        }
+      }
+*/
     </script>
   <body>
 </html>
